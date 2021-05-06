@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal"
+        android:id="@+id/LinearLayout_PlayButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_mainLay"
+        android:background="@drawable/ripple_effect"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:gravity="center|left"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_marginLeft="5dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:ignore="Suspicious0dp">
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/ImageView_Document_Thumb"
+                android:layout_width="45dp"
+                android:layout_height="45dp"/>
+            <LinearLayout
+                android:background="@drawable/pdf_back"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:id="@+id/LinearLayout_DocumentBack"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+                <TextView
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:maxLines="1"
+                    android:maxLength="5"
+                    android:textSize="13dp"
+                    android:text="ASDFGH"
+                    android:id="@+id/TextView_DocumenExtention"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.6"
+            android:gravity="center|left"
+            android:orientation="vertical"
+            tools:ignore="Suspicious0dp">
+            <TextView
+                android:maxLines="1"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="15dp"
+                android:textSize="16dp"
+                android:text=""
+                android:id="@+id/TextView_DocumenName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:background="@color/gray"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/ImageView_Selection"
+            android:src="@drawable/icon_uncheck"
+            android:layout_width="17dp"
+            android:layout_height="17dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:id="@+id/LinearLayout_SelectedItem"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</RelativeLayout>
