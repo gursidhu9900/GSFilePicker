@@ -60,18 +60,13 @@ public class GSFilePicker {
         return this;
     }
 
-  public GSFilePicker setAppBarIconColorHex(String color) {
+    public GSFilePicker setAppBarIconColorHex(String color) {
         intent.putExtra("tabIconColorHaxCode",color);
         return this;
     }
 
-   public GSFilePicker setAppBarTextColorHex(String color) {
+    public GSFilePicker setAppBarTextColorHex(String color) {
         intent.putExtra("tabTextColorHaxCode",color);
-        return this;
-    }
-
-    public GSFilePicker setFileLimitExceedMessageShow(boolean FileLimitMessageShow) {
-        intent.putExtra("FileLimitMessageShow",FileLimitMessageShow);
         return this;
     }
 
@@ -84,11 +79,6 @@ public class GSFilePicker {
     public GSFilePicker setstatusBarTextColor(int color) {
         int clr= mActivity.getResources().getColor(color);
         intent.putExtra("statusBarColor",clr);
-        return this;
-    }
-
-    public GSFilePicker setstatusBarTextColorHex(String color) {
-        intent.putExtra("statusBarColorHex",color);
         return this;
     }
 

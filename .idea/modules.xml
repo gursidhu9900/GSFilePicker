@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GSDocumentPicker.iml" filepath="$PROJECT_DIR$/.idea/modules/GSDocumentPicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GSDocumentPicker.iml" filepath="$PROJECT_DIR$/GSDocumentPicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GSDocumentPicker/GSDocumentPicker.GSDocumentPicker.iml" filepath="$PROJECT_DIR$/.idea/modules/GSDocumentPicker/GSDocumentPicker.GSDocumentPicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/GSDocumentPicker.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/GSDocumentPicker.app.iml" />
     </modules>
   </component>
 </project>

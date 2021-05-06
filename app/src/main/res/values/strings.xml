@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GSDocumentPicker</string>
+    <string name="done">Done</string>
+    <string name="FilePicker">My FilePicker</string>
+</resources>
