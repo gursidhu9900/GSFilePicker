@@ -5,13 +5,13 @@ buildscript {
     repositories {
         google()
         jcenter()
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+     /*   maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }*/
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.0.1'
         classpath 'com.google.gms:google-services:4.3.3'
 //        classpath 'com.android.tools.build:gradle:3.6.1'
-        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.1'
+//        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.1'
 //        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.0'
         classpath 'com.mutualmobile.gradle.plugins:dexinfo:0.1.2'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
@@ -24,9 +24,9 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven {
+      /*  maven {
             url "https://artifactory.9elements.com/artifactory/imgly"
-        }
+        }*/
     }
 }
 
