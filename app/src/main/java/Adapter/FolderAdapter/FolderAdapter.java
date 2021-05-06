@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.gurpreet.sidhu.documentpicker.R;
-import com.gurpreet.sidhu.documentpicker.R2;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -27,8 +26,6 @@ import java.util.ArrayList;
 import Utils.Models.GSFilesPkrModel;
 import Utils.Models.FolderFileModel;
 import Utils.Utils;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.FolderViewHolder> {
 
@@ -166,25 +163,29 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.FolderView
     }
 
     public class FolderViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R2.id.RelativeLayout_main_Lay)
         RelativeLayout mRelativeLayout_main_Lay;
 
-        @BindView(R2.id.LinearLayout_FileType)
         LinearLayout mLinearLayout_FileType;
 
-        @BindView(R2.id.ImageView_Thumbnail)
         ImageView mImageView_Thumbnail;
 
-        @BindView(R2.id.TextView_folderName)
         TextView mTextView_folderName;
 
-        @BindView(R2.id.TextView_FileCount)
         TextView mTextView_FileCount;
 
 
         public FolderViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            mRelativeLayout_main_Lay   = itemView.findViewById(R.id.RelativeLayout_main_Lay);
+
+            mLinearLayout_FileType  = itemView.findViewById(R.id.LinearLayout_FileType);
+
+            mImageView_Thumbnail  = itemView.findViewById(R.id.ImageView_Thumbnail);
+
+            mTextView_folderName = itemView.findViewById(R.id.TextView_folderName);
+
+            mTextView_FileCount  = itemView.findViewById(R.id.TextView_FileCount);
+
         }
     }
 }

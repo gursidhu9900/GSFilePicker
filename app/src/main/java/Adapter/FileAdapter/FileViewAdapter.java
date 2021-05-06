@@ -20,15 +20,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.gurpreet.sidhu.documentpicker.R;
-import com.gurpreet.sidhu.documentpicker.R2;
 
 import java.io.File;
 import java.util.ArrayList;
 
 import Utils.Models.GSFilesPkrModel;
 import Utils.Utils;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class FileViewAdapter extends RecyclerView.Adapter<FileViewAdapter.FileViewHolder> {
 
@@ -197,33 +194,39 @@ public class FileViewAdapter extends RecyclerView.Adapter<FileViewAdapter.FileVi
     }
 
     public class FileViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R2.id.ImageView_Selection)
         ImageView mImageView_Selection;
 
-        @BindView(R2.id.ImageView_Document_Thumb)
         ImageView mImageView_Document_Thumb;
 
-        @BindView(R2.id.LinearLayout_mainLay)
         LinearLayout mLinearLayout_mainLay;
 
-        @BindView(R2.id.LinearLayout_SelectedItem)
         LinearLayout mLinearLayout_SelectedItem;
 
-        @BindView(R2.id.LinearLayout_PlayButton)
         LinearLayout mLinearLayout_PlayButton;
 
-        @BindView(R2.id.TextView_DocumenName)
         TextView mTextView_DocumenName;
 
-        @BindView(R2.id.LinearLayout_DocumentBack)
         LinearLayout LinearLayout_DocumentBack;
 
-        @BindView(R2.id.TextView_DocumenExtention)
         TextView mTextView_DocumenExtention;
 
         public FileViewHolder(@NonNull View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            mImageView_Selection= itemView.findViewById(R.id.ImageView_Selection);
+            mImageView_Document_Thumb= itemView.findViewById(R.id.ImageView_Document_Thumb);
+
+            mLinearLayout_mainLay=  itemView.findViewById(R.id.LinearLayout_mainLay);
+
+            mLinearLayout_SelectedItem= itemView.findViewById(R.id.LinearLayout_SelectedItem);
+
+            mLinearLayout_PlayButton= itemView.findViewById(R.id.LinearLayout_PlayButton);
+
+            mTextView_DocumenName=   itemView.findViewById(R.id.TextView_DocumenName);
+
+            LinearLayout_DocumentBack=   itemView.findViewById(R.id.LinearLayout_DocumentBack);
+
+            mTextView_DocumenExtention=   itemView.findViewById(R.id.TextView_DocumenExtention);
+
         }
     }
 

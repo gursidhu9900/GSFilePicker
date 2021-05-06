@@ -40,9 +40,6 @@ import Adapter.FileAdapter.FileViewAdapterListner;
 import Utils.Models.GSFilesPkrModel;
 import Utils.Models.FolderFileModel;
 import Utils.Utils;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class GSFilePickerActivity extends AppCompatActivity {
 
@@ -208,25 +205,6 @@ public class GSFilePickerActivity extends AppCompatActivity {
         }
     }
 
-
-    @OnClick(R2.id.LinearLayout_Back)
-    void Back() {
-        onBackPressed();
-    }
-
-
-    @OnClick(R2.id.TextView_Done)
-    void Done() {
-        if (mSelectedFiles == null || mSelectedFiles.size() <= 0) {
-            Utils.ShowToast(GSFilePickerActivity.this, "No file is selected");
-        } else {
-            Intent returnIntent = new Intent();
-            returnIntent.putExtra(GET_DATA, mSelectedFiles);
-            setResult(Activity.RESULT_OK, returnIntent);
-            finish();
-        }
-
-    }
 
 
     @Override
