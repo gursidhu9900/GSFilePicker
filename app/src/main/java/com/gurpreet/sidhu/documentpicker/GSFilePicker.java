@@ -29,6 +29,11 @@ public class GSFilePicker {
         return this;
     }
 
+    public GSFilePicker setFileLimitExceedMessageShow(boolean FileLimitMessageShow) {
+        intent.putExtra("FileLimitMessageShow",FileLimitMessageShow);
+        return this;
+    }
+
     public GSFilePicker setSelectFileLimit(int SelectedFileLimit) {
         intent.putExtra("SelectedFileLimit",SelectedFileLimit);
         return this;

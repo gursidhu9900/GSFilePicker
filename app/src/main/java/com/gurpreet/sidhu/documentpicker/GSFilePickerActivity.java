@@ -79,6 +79,7 @@ public class GSFilePickerActivity extends AppCompatActivity {
     private int mAppBarColor;
     private int mAppBarTextColor;
     private String mFileType;
+    private boolean isFileLimitMessageShow = false;
     private List<File> mDirectoryList = new ArrayList<>();
     private ArrayList<FolderFileModel> mFolderFilsList = new ArrayList<>();
     private ArrayList<GSFilesPkrModel> mFilesPath = new ArrayList<>();
@@ -254,6 +255,10 @@ public class GSFilePickerActivity extends AppCompatActivity {
         path = m_root;
         if (getIntent().hasExtra("path")) {
             path = getIntent().getStringExtra("path");
+        }
+        if (getIntent().hasExtra("FileLimitMessageShow")) {
+            isFileLimitMessageShow=getIntent().getBooleanExtra("FileLimitMessageShow",false);
+
         }
 
         if (getIntent().hasExtra("showHiddenFolder")) {
@@ -505,17 +510,25 @@ public class GSFilePickerActivity extends AppCompatActivity {
                     returnIntent.putExtra(GET_DATA, mSelectedFiles);
                     setResult(Activity.RESULT_OK, returnIntent);
                     finish();*/
-                    Utils.showAlertMessage(GSFilePickerActivity.this, "You can select only " + mSelectedFileLimit + " files", new Utils.AlertCallback() {
-                        @Override
-                        public void onOkPress() {
-                            Intent returnIntent = new Intent();
-                            returnIntent.putExtra(GET_DATA, mSelectedFiles);
-                            setResult(Activity.RESULT_OK, returnIntent);
-                            finish();
-                        }
-                    });
-                }
 
+                    if (isFileLimitMessageShow){
+                        Utils.showAlertMessage(GSFilePickerActivity.this, "You can select only " + mSelectedFileLimit + " files", new Utils.AlertCallback() {
+                            @Override
+                            public void onOkPress() {
+                                Intent returnIntent = new Intent();
+                                returnIntent.putExtra(GET_DATA, mSelectedFiles);
+                                setResult(Activity.RESULT_OK, returnIntent);
+                                finish();
+                            }
+                        });
+
+                    }else {
+                        Intent returnIntent = new Intent();
+                        returnIntent.putExtra(GET_DATA, mSelectedFiles);
+                        setResult(Activity.RESULT_OK, returnIntent);
+                        finish();
+                    }
+                }
               /*  int totalCount=mSelectedFiles.size()+1;
                 if (totalCount>mSelectedFileLimit){
                     Utils.ShowToast(GSFilePickerActivity.this,"You can't select files more than "+mSelectedFileLimit);
