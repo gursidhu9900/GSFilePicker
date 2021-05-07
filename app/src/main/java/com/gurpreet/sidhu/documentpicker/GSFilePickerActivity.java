@@ -175,7 +175,7 @@ public class GSFilePickerActivity extends AppCompatActivity {
             });
 
         }
-          
+
         if (getIntent().hasExtra("tabColorHaxCode")){
             String tabColor=getIntent().getStringExtra("tabColorHaxCode");
             Utils.getToolBarBack(this, tabColor, new Utils.DrawableCallback() {
