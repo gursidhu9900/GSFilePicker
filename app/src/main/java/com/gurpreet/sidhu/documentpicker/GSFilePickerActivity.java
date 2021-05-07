@@ -164,6 +164,18 @@ public class GSFilePickerActivity extends AppCompatActivity {
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.selection_color));
 
         }
+
+          if (getIntent().hasExtra("tabColorHaxCode")){
+            String tabColor=getIntent().getStringExtra("tabColorHaxCode");
+            Utils.getToolBarBack(this, tabColor, new Utils.DrawableCallback() {
+                @Override
+                public void setDrawable(Drawable drawable) {
+                    mLinearLayout_Toolbar.setBackground(drawable);
+                }
+            });
+
+        }
+          
         if (getIntent().hasExtra("tabColorHaxCode")){
             String tabColor=getIntent().getStringExtra("tabColorHaxCode");
             Utils.getToolBarBack(this, tabColor, new Utils.DrawableCallback() {

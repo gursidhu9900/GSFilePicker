@@ -24,6 +24,11 @@ public class GSFilePicker {
         return builder;
     }
 
+    public GSFilePicker setAppBarColorHex(String color) {
+        intent.putExtra("tabColorHaxCode",color);
+        return this;
+    }
+
     public GSFilePicker selectableExtentions(String extention) {
         intent.putExtra("extentions",extention);
         return this;
