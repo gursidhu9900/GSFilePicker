@@ -183,6 +183,14 @@ public class GSFilePickerActivity extends AppCompatActivity {
             window.setStatusBarColor(statusBarColor);
         }
 
+         if (getIntent().hasExtra("statusBarColorHex")) {
+            int statusBarColor=Color.parseColor(getIntent().getStringExtra("statusBarColorHex"));
+            Window window = this.getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(statusBarColor);
+        }
+
         if (getIntent().hasExtra("title")) {
             String title=Utils.CheckForNullValue(getIntent().getStringExtra("title"));
             if (!title.equalsIgnoreCase("")){

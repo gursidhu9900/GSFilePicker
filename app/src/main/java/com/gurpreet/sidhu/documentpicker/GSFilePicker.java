@@ -29,6 +29,11 @@ public class GSFilePicker {
         return this;
     }
 
+    public GSFilePicker setstatusBarTextColorHex(String color) {
+        intent.putExtra("statusBarColorHex",color);
+        return this;
+    }
+
     public GSFilePicker setFileLimitExceedMessageShow(boolean FileLimitMessageShow) {
         intent.putExtra("FileLimitMessageShow",FileLimitMessageShow);
         return this;
