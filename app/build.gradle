@@ -68,8 +68,8 @@ publishing {
             url = uri("https://maven.pkg.github.com/gursidhu9900/GSFilePicker")
 
             credentials {
-                username = githubProperties['gpr.usr'] ?: System.getenv("gsidhu900")
-                password = githubProperties['gpr.key'] ?: System.getenv("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")
+                username = githubProperties['gpr.usr'] ?: System.getenv("gursidhu9900")
+                password = githubProperties['gpr.key'] ?: System.getenv("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")
             }
         }
     }
