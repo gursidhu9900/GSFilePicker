@@ -40,29 +40,31 @@ import Adapter.FileAdapter.FileViewAdapterListner;
 import Utils.Models.GSFilesPkrModel;
 import Utils.Models.FolderFileModel;
 import Utils.Utils;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class GSFilePickerActivity extends AppCompatActivity {
 
-
-    //    @BindView(R2.id.LinearLayout_Toolbar)
+//    @BindView(R2.id.LinearLayout_Toolbar)
     LinearLayout mLinearLayout_Toolbar;
 
-    //    @BindView(R2.id.ImageView_Back)
+//    @BindView(R2.id.ImageView_Back)
     ImageView mImageView_Back;
 
-    //    @BindView(R2.id.RecyclerView_FilesView)
+//    @BindView(R2.id.RecyclerView_FilesView)
     RecyclerView mRecyclerView_FilesView;
 
-    //    @BindView(R2.id.RecyclerView_FoldersView)
+//    @BindView(R2.id.RecyclerView_FoldersView)
     RecyclerView mRecyclerView_FoldersView;
 
-    //    @BindView(R2.id.LinearLayout_Back)
+//    @BindView(R2.id.LinearLayout_Back)
     LinearLayout mLinearLayout_Back;
 
-    //    @BindView(R2.id.TextView_Title)
+//    @BindView(R2.id.TextView_Title)
     TextView mTextView_Title;
 
-    //    @BindView(R2.id.TextView_Done)
+//    @BindView(R2.id.TextView_Done)
     TextView mTextView_Done;
 
     private SelectUnSelectFiles mSelectUnSelectFiles = new SelectUnSelectFiles();
@@ -79,7 +81,6 @@ public class GSFilePickerActivity extends AppCompatActivity {
     private int mAppBarColor;
     private int mAppBarTextColor;
     private String mFileType;
-    private boolean isFileLimitMessageShow = false;
     private List<File> mDirectoryList = new ArrayList<>();
     private ArrayList<FolderFileModel> mFolderFilsList = new ArrayList<>();
     private ArrayList<GSFilesPkrModel> mFilesPath = new ArrayList<>();
@@ -119,10 +120,12 @@ public class GSFilePickerActivity extends AppCompatActivity {
                 if (mSelectedFiles == null || mSelectedFiles.size() <= 0) {
                     Utils.ShowToast(GSFilePickerActivity.this, "No file is selected");
                 } else {
+                    Log.e("GSFilePickerActivity"," mSelectedFiles "+mSelectedFiles.size());
                     Intent returnIntent = new Intent();
                     returnIntent.putExtra(GET_DATA, mSelectedFiles);
                     setResult(Activity.RESULT_OK, returnIntent);
                     finish();
+                    Log.e("GSFilePickerActivity"," finish intent");
                 }
             }
         });
@@ -164,18 +167,6 @@ public class GSFilePickerActivity extends AppCompatActivity {
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.selection_color));
 
         }
-
-          if (getIntent().hasExtra("tabColorHaxCode")){
-            String tabColor=getIntent().getStringExtra("tabColorHaxCode");
-            Utils.getToolBarBack(this, tabColor, new Utils.DrawableCallback() {
-                @Override
-                public void setDrawable(Drawable drawable) {
-                    mLinearLayout_Toolbar.setBackground(drawable);
-                }
-            });
-
-        }
-
         if (getIntent().hasExtra("tabColorHaxCode")){
             String tabColor=getIntent().getStringExtra("tabColorHaxCode");
             Utils.getToolBarBack(this, tabColor, new Utils.DrawableCallback() {
@@ -195,15 +186,7 @@ public class GSFilePickerActivity extends AppCompatActivity {
             window.setStatusBarColor(statusBarColor);
         }
 
-         if (getIntent().hasExtra("statusBarColorHex")) {
-            int statusBarColor=Color.parseColor(getIntent().getStringExtra("statusBarColorHex"));
-            Window window = this.getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(statusBarColor);
-        }
-
-        if (getIntent().hasExtra("title")) {
+       if (getIntent().hasExtra("title")) {
             String title=Utils.CheckForNullValue(getIntent().getStringExtra("title"));
             if (!title.equalsIgnoreCase("")){
                 mTextView_Title.setText(title);
@@ -226,6 +209,28 @@ public class GSFilePickerActivity extends AppCompatActivity {
         }
     }
 
+
+    @OnClick(R2.id.LinearLayout_Back)
+    void Back() {
+        onBackPressed();
+    }
+
+
+    @OnClick(R2.id.TextView_Done)
+    void Done() {
+        Log.e("GSFilePickerActivity"," onClick done");
+        if (mSelectedFiles == null || mSelectedFiles.size() <= 0) {
+            Utils.ShowToast(GSFilePickerActivity.this, "No file is selected");
+        } else {
+            Log.e("GSFilePickerActivity"," mSelectedFiles "+mSelectedFiles.size());
+            Intent returnIntent = new Intent();
+            returnIntent.putExtra(GET_DATA, mSelectedFiles);
+            setResult(Activity.RESULT_OK, returnIntent);
+            finish();
+            Log.e("GSFilePickerActivity"," finish intent");
+        }
+
+    }
 
 
     @Override
@@ -275,10 +280,6 @@ public class GSFilePickerActivity extends AppCompatActivity {
         path = m_root;
         if (getIntent().hasExtra("path")) {
             path = getIntent().getStringExtra("path");
-        }
-        if (getIntent().hasExtra("FileLimitMessageShow")) {
-            isFileLimitMessageShow=getIntent().getBooleanExtra("FileLimitMessageShow",false);
-
         }
 
         if (getIntent().hasExtra("showHiddenFolder")) {
@@ -530,25 +531,17 @@ public class GSFilePickerActivity extends AppCompatActivity {
                     returnIntent.putExtra(GET_DATA, mSelectedFiles);
                     setResult(Activity.RESULT_OK, returnIntent);
                     finish();*/
-
-                    if (isFileLimitMessageShow){
-                        Utils.showAlertMessage(GSFilePickerActivity.this, "You can select only " + mSelectedFileLimit + " files", new Utils.AlertCallback() {
-                            @Override
-                            public void onOkPress() {
-                                Intent returnIntent = new Intent();
-                                returnIntent.putExtra(GET_DATA, mSelectedFiles);
-                                setResult(Activity.RESULT_OK, returnIntent);
-                                finish();
-                            }
-                        });
-
-                    }else {
-                        Intent returnIntent = new Intent();
-                        returnIntent.putExtra(GET_DATA, mSelectedFiles);
-                        setResult(Activity.RESULT_OK, returnIntent);
-                        finish();
-                    }
+                    Utils.showAlertMessage(GSFilePickerActivity.this, "You can select only " + mSelectedFileLimit + " files", new Utils.AlertCallback() {
+                        @Override
+                        public void onOkPress() {
+                            Intent returnIntent = new Intent();
+                            returnIntent.putExtra(GET_DATA, mSelectedFiles);
+                            setResult(Activity.RESULT_OK, returnIntent);
+                            finish();
+                        }
+                    });
                 }
+
               /*  int totalCount=mSelectedFiles.size()+1;
                 if (totalCount>mSelectedFileLimit){
                     Utils.ShowToast(GSFilePickerActivity.this,"You can't select files more than "+mSelectedFileLimit);

@@ -1,6 +1,10 @@
-apply plugin: 'com.android.library'
-//apply plugin: 'com.android.application'
+//apply plugin: 'com.android.library'
+apply plugin: 'com.android.application'
 //apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'maven-publish'
+
+def githubProperties = new Properties()
+githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
 
 android {
     compileSdkVersion 29
@@ -29,6 +33,49 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+
+
+
+def getGroupID = { ->
+    return "com.speedum.libraries" // Replace with version Name
+}
+def getVersionName = { ->
+    return "1.0.0" // Version code of lib
+}
+
+def getArtificatId = { ->
+    return "file_picker" // library name ID
+}
+def getArrPath = { ->
+    return "$buildDir"
+}
+
+publishing {
+    publications {
+        maven(MavenPublication){
+//        release(MavenPublication) {
+//        bar(MavenPublication){
+            groupId = getGroupID()
+            artifactId = getArtificatId()
+            version = getVersionName()
+            artifact("${getArrPath()}/outputs/aar/app-release.aar")
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/nitinSpeedum/new_provider_app_Android")
+
+            credentials {
+                username = githubProperties['gpr.usr'] ?: System.getenv("nitinSpeedum")
+                password = githubProperties['gpr.key'] ?: System.getenv("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")
+            }
+        }
+    }
+
+}
+
 
 dependencies {
     implementation group: 'commons-io', name: 'commons-io', version: '2.6'
