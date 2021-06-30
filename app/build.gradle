@@ -1,6 +1,6 @@
-//apply plugin: 'com.android.library'
-apply plugin: 'com.android.application'
-//apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'com.android.library'
+//apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'maven-publish'
 
 def githubProperties = new Properties()
@@ -37,7 +37,7 @@ android {
 
 
 def getGroupID = { ->
-    return "com.speedum.libraries" // Replace with version Name
+    return "com.gsidhu.libraries" // Replace with version Name
 }
 def getVersionName = { ->
     return "1.0.0" // Version code of lib
@@ -65,11 +65,11 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/nitinSpeedum/new_provider_app_Android")
+            url = uri("https://maven.pkg.github.com/gursidhu9900/GSFilePicker")
 
             credentials {
-                username = githubProperties['gpr.usr'] ?: System.getenv("nitinSpeedum")
-                password = githubProperties['gpr.key'] ?: System.getenv("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")
+                username = githubProperties['gpr.usr'] ?: System.getenv("gsidhu900")
+                password = githubProperties['gpr.key'] ?: System.getenv("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")
             }
         }
     }
@@ -91,5 +91,14 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    /////ButterKnife
+//    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+//    implementation 'com.jakewharton:butterknife:10.0.0'
+//    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    implementation 'me.zhanghai.android.materialedittext:library:1.0.5'
+    implementation 'com.android.support:multidex:1.0.3'
 
 }
