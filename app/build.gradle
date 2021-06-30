@@ -7,13 +7,13 @@ def githubProperties = new Properties()
 githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 30
+//    buildToolsVersion "23.0.3"
 
     defaultConfig {
 //        applicationId "com.gurpreet.sidhu.documentpicker"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
 /*
         versionCode 1
         versionName "1.0"
@@ -40,7 +40,7 @@ def getGroupID = { ->
     return "com.gsidhu.libraries" // Replace with version Name
 }
 def getVersionName = { ->
-    return "1.0.0" // Version code of lib
+    return "1.0.1" // Version code of lib
 }
 
 def getArtificatId = { ->
